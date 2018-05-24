@@ -8,8 +8,6 @@ using namespace std;
 
 #define DIMENSION 2
 #define POINT_NUM 100
-#define _x [0]
-#define _y [1]
 #define MAX_GRID 100
 
 typedef struct{
