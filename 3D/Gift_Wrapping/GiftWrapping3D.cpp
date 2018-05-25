@@ -6,7 +6,7 @@
 #include<time.h>
 using namespace std;
 
-#define DIMENSION 2
+#define DIMENSION 3
 #define POINT_NUM 100
 #define MAX_GRID 100
 
@@ -17,6 +17,7 @@ typedef struct{
 vector< point > PointSet(POINT_NUM);
 vector< int > S;
 
+bool check[POINT_NUM];
 
 //CCW Algorithm for 2-Dimension
 long long CCW_2D(point a, point b, point c) {
