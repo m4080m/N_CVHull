@@ -58,10 +58,10 @@ void GrahamScan(void){
 	swap(PointSet[start], PointSet[0]);
 	sort(PointSet.begin()+1, PointSet.end(), cmp);
 	for (int i = 0; i < POINT_NUM; i++){
-    	while (S.size() >= 2 && CCW_2D(PointSet[S[S.size() - 2]], PointSet[S.back()], PointSet[i]) <= 0){
-    		S.pop_back();
-    	}
-    	S.push_back(i);
+		while (S.size() >= 2 && CCW_2D(PointSet[S[S.size() - 2]], PointSet[S.back()], PointSet[i]) <= 0){
+			S.pop_back();
+		}
+		S.push_back(i);
 	}
 }
 

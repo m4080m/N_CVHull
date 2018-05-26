@@ -9,7 +9,7 @@
 using namespace std;
 
 #define DIMENSION 2
-#define POINT_NUM 300
+#define POINT_NUM 20
 #define MAX_GRID 100
 
 typedef struct {

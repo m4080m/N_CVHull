@@ -2,6 +2,7 @@
 #include<algorithm>
 #include<vector>
 #include<stack>
+#include<queue>
 #include<stdlib.h>
 #include<time.h>
 using namespace std;
@@ -14,8 +15,20 @@ typedef struct{
 	int coord[DIMENSION];
 }point;
 
+typedef struct {
+	int a;
+	int b;
+}edge;
+
+typedef struct {
+	int a;
+	int b;
+	int c;
+}face;
+
 vector< point > PointSet(POINT_NUM);
-vector< int > S;
+vector< face > S;
+queue< edge > Q;
 
 bool check[POINT_NUM];
 
@@ -41,38 +54,41 @@ void Make_Points(void) {
 	return;
 }
 
-void Gift_Wrap(void) {
+void Start_Edge(void) {
 	int start = 0;
 	for (int i = 1; i < POINT_NUM; i++) {
 		if (PointSet[start].coord[0] < PointSet[i].coord[0]) {
 			start = i;
 		}
 	}
-	S.push_back(start);
-	while (1) {
-		int next = -1, cur = S.back();
-		for (int i = 0; i < POINT_NUM; i++) {
-			if (i == cur) {
-				continue;
-			}
-			if (next == -1) {
-				next = i;
-				continue;
-			}
-			long long ccw = CCW_2D(PointSet[cur], PointSet[next], PointSet[i]);
-			if (ccw > 0) {
-				next = i;
-			}
-			else if (ccw == 0) {
-				next = Dist(PointSet[cur], PointSet[next]) > Dist(PointSet[cur], PointSet[i]) ? next : i;
-			}
+	int next = -1, cur = start;
+	for (int i = 0; i < POINT_NUM; i++) {
+		if (i == cur) {
+			continue;
 		}
-		if (next == start) {
-			break;
+		if (next == -1) {
+			next = i;
+			continue;
 		}
-		else {
-			S.push_back(next);
+		long long ccw = CCW_2D(PointSet[cur], PointSet[next], PointSet[i]);
+		if (ccw > 0) {
+			next = i;
 		}
+		else if (ccw == 0) {
+			next = Dist(PointSet[cur], PointSet[next]) > Dist(PointSet[cur], PointSet[i]) ? next : i;
+		}
+	}
+	edge temp;
+	temp.a = cur;
+	temp.b = next;
+	Q.push(temp);
+	return;
+}
+
+void Gift_Wrap(void) {
+	Start_Edge();
+	while (!Q.empty()) {
+
 	}
 }
 
