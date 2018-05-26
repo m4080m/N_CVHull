@@ -7,7 +7,7 @@
 #include<time.h>
 using namespace std;
 
-#define DIMENSION 3
+#define DIMENSION 2
 #define POINT_NUM 100
 #define MAX_GRID 100
 
@@ -30,7 +30,6 @@ vector< point > PointSet(POINT_NUM);
 vector< face > S;
 queue< edge > Q;
 
-bool check[POINT_NUM];
 
 //CCW Algorithm for 2-Dimension
 long long CCW_2D(point a, point b, point c) {
