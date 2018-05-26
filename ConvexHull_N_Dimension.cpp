@@ -49,7 +49,14 @@ double solveEqn(LEqation eqn, int unknown, Point val)
 
 void findeqn(LEqation *eqn, Queue pointSet)//DIMENSION 개의 점을 지나는 1차방정식을 찾는다.
 {
-	//
+	if (DIMENSION == 2)
+	{
+
+	}
+	else if (DIMENSION == 3)
+	{
+
+	}
 }
 
 double distance(Point p1, Point p2)
